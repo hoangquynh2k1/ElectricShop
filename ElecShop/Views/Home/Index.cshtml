@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div ng-controller="HomeController">
+    <div>
+        Sorting Field name
+        <select ng-model="sortcolumn">
+            <option value="TenSP">Ten san pham</option>
+            <option value="MaSP">Ma san pham</option>
+            <option value="KhoiLuong">Gia</option>
+        </select>
+    </div>
+    <div>
+        Sorting Direction
+        <input type="button" value="{{dr}}" ng-click="ChonS(dr)" />
+    </div>
+    <div class="prod_box" ng-repeat="data in lsp |orderBy:sortcolumn:reverse">
+        <div class="top_prod_box"></div>
+        <div class="center_prod_box">
+            <div class="product_title"><a ng-click="Chon(data.MaSP)" href="@Url.Action("CTSP","Home")">{{data.TenSP}}</a></div>
+            <div class="product_img">
+                <a ng-click="Chon(data.MaSP)" href="@Url.Action("CTSP","Home")"><img class="product_img1" src="{{data.HinhAnh}}" alt="" border="0" /></a>
+            </div>
+            <div class="prod_price"><span class="reduce">{{data.KhoiLuong}}$</span> <span class="price">{{data.KichThuoc}}$</span></div>
+        </div>
+        <div class="bottom_prod_box"></div>
+        <div class="prod_details_tab">
+            <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]">
+                <img src="images/cart.gif" alt="" border="0" class="left_bt" />
+            </a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                <img src="images/favs.gif" alt="" border="0" class="left_bt" />
+            </a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]">
+                <img src="images/favorites.gif" alt="" border="0" class="left_bt" />
+            </a> <a href="details.html" class="prod_details">details</a>
+        </div>
+    </div>
+</div>

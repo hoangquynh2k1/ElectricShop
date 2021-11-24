@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="table" ng-app="AdminApp" ng-controller="AdminController">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Thêm sản phẩm
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Tên sản phẩm:</label>
+                            <input type="text" ng-model="acb.TenSP" class="form-control" id="aaa">
+
+                            <label for="recipient-name" class="col-form-label">Mô tả:</label>
+                            <input type="text" ng-model="acb.ThongSoKT" class="form-control" id="recipient-name">
+
+                            <label for="recipient-name" class="col-form-label">Khối lượng:</label>
+                            <input type="number" ng-model="acb.KhoiLuong" class="form-control" id="recipient-name">
+
+                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                            <input type="number" ng-model="acb.KichThuoc" class="form-control" id="recipient-name">
+
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" value="{{acb.HinhAnh}}" class="custom-file-input" id="inputGroupFile01">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" ng-click="LuuSua(acb)" class="btn btn-primary">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">MaSP</th>
+                <th scope="col">TemSP</th>
+                <th scope="col">MoTa</th>
+                <th scope="col">KichThuoc</th>
+                <th scope="col">SoLuong</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="da in lspa">
+                <th scope="row">{{da.MaSP}}</th>
+                <td>{{da.TenSP}}</td>
+                <td>{{da.MoTa}}</td>
+                <td>{{da.KhoiLuong}}</td>
+                <td>{{da.KichThuoc}}</td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm btn-primary"
+                            style="font-size:20px" data-toggle="modal" data-target="#exampleModal" ng-click="Sua(da)">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                </td>
+                <td>
+                    <button ng-click="Xoa(da.MaSP)" type="button" class="btn btn-default btn-sm btn-primary" style="font-size:20px">
+                        <i class="material-icons ">delete</i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
