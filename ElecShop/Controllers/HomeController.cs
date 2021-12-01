@@ -58,14 +58,16 @@ namespace ElecShop.Controllers
             if(user == null)
             {
                 Session["login"] = "0";
+                return Json(new { login = "0", Khach = user }, JsonRequestBehavior.AllowGet);
             }
             else
             {
                 Session["login"] = "1";
                 Session["khach"] = JsonConvert.SerializeObject(user);
                 Session.Timeout = 360;
+                return Json(new { login = "1", Khach = user }, JsonRequestBehavior.AllowGet);
             }
-            return Json(new { login = "1", Khach = user }, JsonRequestBehavior.AllowGet);
+            
         }
         public JsonResult Logout()
         {

@@ -4,7 +4,6 @@ myapp.controller("HomeController",
     function ($rootScope, $scope, $http) {
         $http.get('/Home/LaySP').then(function (d) {
             $rootScope.lsp = d.data;
-            alert(d.data);
         },
             function (error) {
             alert('That bai');
@@ -38,20 +37,39 @@ myapp.controller("HomeController",
     });
 var loginapp = angular.module('DangNhapApp', []);
 myapp.controller("DangNhapController",
-    function ($scope, $http) {
+    function ($scope, $http,$rootScope)
+    {
+        //$rootScope.close = "";
+        //$rootScope.khach = null;
+        //$rootScope.login = "0";
+        //$rootScope.remember = false;
+        $rootScope.Logout = function ()
+        {
+            $http({
+                url: '/Home/Logout', method: 'get'
+            }).then(function (d)
+            {
+                $rootScope.log = "Login";
+            }, function () { });
+        };
         $scope.Login = function (un, pw) {
             $http({
                 url: '/Home/Login', method: 'get', params: { us: un, pw: pw }
-            }).then(function success(d) {
-                if (d.data.login == "0") {
-                    alert("Tài khoản hoặc mật khẩu không chính xác!")
+            }).then(function success(d)
+            {
+                if (d.data.login == "1")
+                {
+                    $rootScope.close = "modal";
+                    alert("Đăng nhập thành công!");
                 }
-                else {
-                    alert("Đăng nhập thành công")
+                else
+                {
+                    alert("Đăng nhập thất bại");
                 }
             })
+        }
     }
-});
+);
 
 
 
