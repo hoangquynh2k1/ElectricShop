@@ -26,7 +26,7 @@ namespace DAO
             List<SanPham> l = new List<SanPham>();
             foreach (DataRow dr in dt.Rows)
             {
-                SanPham sp = new SanPham(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), int.Parse(dr[4].ToString()), int.Parse(dr[5].ToString()), dr[6].ToString());
+                SanPham sp = new SanPham(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), int.Parse(dr[5].ToString()), dr[6].ToString());
                 l.Add(sp);
             }
             return l;
@@ -39,8 +39,7 @@ namespace DAO
         }
         public string SuaSP(SanPham sp)
         {
-            string sql = "update set SP set TenSP='" + sp.TenSP + "," + ",ThongSoKT='" + sp.ThongSoKT + ",MaDong='" + sp.MaDong +
-                "KichThuoc='" + sp.KichThuoc + ",KhoiLuong='" + sp.KhoiLuong + "HinhAnh='" + sp.HinhAnh+ " where MaSP= '" + sp.MaSP ;
+            string sql = "UPDATE [dbo].[SP] SET[TenSP] = N'"+sp.TenSP+ "'     ,[ThongSoKT] = N'" + sp.ThongSoKT + "'      ,[MaDong] = '" + sp.MaDong + "'      ,[KichThuoc] = N'" + sp.KichThuoc + "'      ,[KhoiLuong] = " + sp.KhoiLuong + "      ,[HinhAnh] = N'" + sp.HinhAnh + "' WHERE[MaSP] = '" + sp.MaSP + "'";
             return dh.ExecuteNonQuery(sql);
         }
         public string Xoa(string sp)

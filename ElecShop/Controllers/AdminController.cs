@@ -22,14 +22,22 @@ namespace ElecShop.Controllers
             List<SanPham> lsp = SanPhamBuss.GetSanPhams();
             return Json(lsp, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult Them(string Ma, string Ten, string Thong, string MaD, string Kich, int Khoi, string Hinh)
+        {
+            SanPham sanPham = new SanPham(Ma.Trim(), Ten, Thong, MaD, Kich, Khoi, Hinh);
+            string s = SanPhamBuss.Them(sanPham);
+            return Json(s, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult Xoa(string ma)
         {
             string s= SanPhamBuss.Xoa(ma);
             return Json(s,JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Sua(SanPham ma)
+        public JsonResult Sua(string Ma, string Ten, string Thong, string MaD, string Kich, int Khoi, string Hinh)
         {
-            string s = SanPhamBuss.Sua(ma);
+            SanPham sanPham = new SanPham(Ma.Trim(),Ten,Thong,MaD,Kich,Khoi,Hinh);
+            string s = SanPhamBuss.Sua(sanPham);
             return Json(s, JsonRequestBehavior.AllowGet);
         }
     }

@@ -8,6 +8,8 @@ myapp.controller("HomeController",
             function (error) {
             alert('That bai');
             });
+        $rootScope.logstt = "Đăng nhập";
+        $rootScope.myLogIn = "myLogIn";
         $scope.sortcolumn = "KhoiLuong";
         $scope.reverse = true;
         $scope.dr = "Ascending";
@@ -40,9 +42,12 @@ myapp.controller("DangNhapController",
     function ($scope, $http,$rootScope)
     {
         //$rootScope.close = "";
-        //$rootScope.khach = null;
-        //$rootScope.login = "0";
-        //$rootScope.remember = false;
+        $rootScope.khach = null;
+        $rootScope.login = "0";
+        $rootScope.remember = false;
+        if ($rootScope.logstt == "Đăng Xuất") {
+            Logout();
+        }
         $rootScope.Logout = function ()
         {
             $http({
@@ -50,6 +55,7 @@ myapp.controller("DangNhapController",
             }).then(function (d)
             {
                 $rootScope.log = "Login";
+                $rootScope.myLogIn = "myLogIn";
             }, function () { });
         };
         $scope.Login = function (un, pw) {
@@ -60,7 +66,15 @@ myapp.controller("DangNhapController",
                 if (d.data.login == "1")
                 {
                     $rootScope.close = "modal";
-                    alert("Đăng nhập thành công!");
+                    $rootScope.myLogIn = "";
+                    $rootScope.logstt = "Đăng Xuất";
+                    
+                    if ($rootScope.login != "1") {
+                        $rootScope.login = "1";
+                        $rootScope.close = "modal";
+                        alert("Đăng nhập thành công!");
+                    }
+                    
                 }
                 else
                 {
