@@ -11,9 +11,15 @@ namespace BUS
     public class UserBUS
     {
         UserDAO UserDAO = new UserDAO();
+        KhachHangDAO KhachHangDAO = new KhachHangDAO();
         public User GetUser(string us,string pw)
         {
             return UserDAO.GetUser(us, pw);
         }
+        public KhachHang GetKhachHang(string makh)
+        {
+            return KhachHangDAO.GetKhachHang(makh);
+        }
+
     }
 }

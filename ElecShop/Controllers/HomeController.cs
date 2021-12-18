@@ -75,5 +75,9 @@ namespace ElecShop.Controllers
             Session.Remove("khach");
             return Json(0, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Cart()
+        {
+            return View();
+        }
     }
 }

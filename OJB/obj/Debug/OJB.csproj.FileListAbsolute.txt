@@ -1,6 +1,5 @@
 D:\DaiHoc\Code\MVC\ElecShop\OJB\bin\Debug\OJB.dll
 D:\DaiHoc\Code\MVC\ElecShop\OJB\bin\Debug\OJB.pdb
-D:\DaiHoc\Code\MVC\ElecShop\OJB\obj\Debug\OJB.csprojAssemblyReference.cache
 D:\DaiHoc\Code\MVC\ElecShop\OJB\obj\Debug\OJB.csproj.CoreCompileInputs.cache
 D:\DaiHoc\Code\MVC\ElecShop\OJB\obj\Debug\OJB.dll
 D:\DaiHoc\Code\MVC\ElecShop\OJB\obj\Debug\OJB.pdb

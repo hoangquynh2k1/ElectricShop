@@ -40,5 +40,9 @@ namespace ElecShop.Controllers
             string s = SanPhamBuss.Sua(sanPham);
             return Json(s, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }
